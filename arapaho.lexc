@@ -1,0 +1,522 @@
+Multichar_Symbols [VERB]
+! Verb Stem Types
+[II] [IA] [TI] [TA]
+! Orders
+[AFFIRMATIVE] [NON_AFFIRMATIVE] [IMPERATIVE] [CONJUNCT] [SUBJUNCTIVE] [ITERATIVE]
+! Number
+[SG] [PL]
+! Person-Number for Subjects
+[1SG-SUBJ] [2SG-SUBJ] [3SG-SUBJ] [4SG-SUBJ] [1PL-SUBJ] [2PL-SUBJ] [3PL-SUBJ] [4PL-SUBJ] [1PL-EXCL-SUBJ] [1PL-INCL-SUBJ]
+! Person-Number for Objects
+[1SG-OBJ] [2SG-OBJ] [3SG-OBJ] [4SG-OBJ] [1PL-OBJ] [2PL-OBJ] [3PL-OBJ] [4PL-OBJ] [1PL-EXCL-OBJ] [1PL-INCL-OBJ]
+! Person without explicit marking of Number
+[3P-OBJ] [4P-OBJ] [3P-SUBJ] [4P-SUBJ]
+! Inclusive vs. Exclusive distinction in 1st Person Plural
+[INCL] [EXCL]
+! prefixes to verb stem
+[NEG] [PROCLITIC] [IMPERF] [INTERR] ! [THEME_MARKER]
+! tense or infinitive
+[PRESENT] [PAST] [FUTURE] [INF]
+! aspect
+[PROGRESSIVE] [PERFECTIVE] [IMPERFECTIVE] [SIMPLE]
+[PERSON]
+! Initial Change
+[IC]
+! Mood
+[INTERROGATIVE] [DECLARATIVE] [NEGATIVE]
+! Type of Direction of Action for TA verbs
+[LocalAction] [DirectAction] [InverseAction]
+! Irregular Form
+[IRREGULAR] [OLD_VERSION]
+
+! Flags
+! Part of Speech
+@U.POS.Verb@
+! Verb Stem Type
+@U.StemType.II@ @U.StemType.AI@ @U.StemType.TI@ @U.StemType.TA@
+! Order
+@U.Order.AFF@ @U.Order.NAFF@ @U.Order.IMP@ @U.Order.CONJ@
+! Present Perfect or Present Progressive
+@U.TAM.PresPerf@ @U.TAM.PresProg@
+! tense
+@U.TAM.Past@ @U.TAM.Present@ @U.TAM.Future@
+! aspect
+@U.TAM.Perfect@ @U.TAM.Prog@ @U.TAM.Perfective@ @U.TAM.Imperfective@ @U.TAM.Simple@ @U.TAM.NotImperfective@
+! Mood
+@U.Mood.Question@ @U.Mood.Declarative@ @U.Mood.Negative@
+! Morpheme Boundaries
+@U.Stem.Initial@ @U.Stem.Final@
+! Initial Change forms
+@U.IC.Yes@
+! Direction of Action for TA Verbs
+@U.ActionType.Local@ @U.ActionType.Direct@ @U.ActionType.Inverse@
+! Exceptions in AI verb stem class
+@U.ExceptionAI.Yes@ @U.ExceptionAI.No@
+! Backward TA verbs where direction of action does not correspond to/is the inverse of English, like "to agree"
+@U.Backward.Yes@ @U.Backward.No@
+
+! PERNUM AGREEMENT !
+@U.PERNUM.1SGS@ @U.PERNUM.1PLS@ @U.PERNUM.12S@ @U.PERNUM.2SGS@ @U.PERNUM.2PLS@ @U.PERNUM.3SGS@ @U.PERNUM.3PLS@ @U.PERNUM.4SGS@ @U.PERNUM.4PLS@
+@U.PERNUM.1SGSAI@ @U.PERNUM.1PLSAI@ @U.PERNUM.12SAI@ @U.PERNUM.2SGSAI@ @U.PERNUM.2PLSAI@ @U.PERNUM.3SGSAI@ @U.PERNUM.3PLSAI@ @U.PERNUM.4SGSAI@ @U.PERNUM.4PLSAI@
+@U.PERNUM.1S2S@ @U.PERNUM.1S2P@ @U.PERNUM.2S1S@ @U.PERNUM.2P1S@ @U.PERNUM.1P2S@ @U.PERNUM.1P2P@ @U.PERNUM.2S1P@ @U.PERNUM.2P1P@
+@U.PERNUM.1S3S@ @U.PERNUM.1S3P@ @U.PERNUM.2S3S@ @U.PERNUM.2S3P@ @U.PERNUM.3S4@ @U.PERNUM.4S4@ @U.PERNUM.1P3S@ @U.PERNUM.1P3P@
+@U.PERNUM.123@ @U.PERNUM.2P3@ @U.PERNUM.3P4@ @U.PERNUM.4P4@ @U.PERNUM.3S1S@ @U.PERNUM.3P1S@ @U.PERNUM.3S2S@ @U.PERNUM.3P2S@
+@U.PERNUM.43S@ @U.PERNUM.44S@ @U.PERNUM.3S1P@ @U.PERNUM.3P1P@ @U.PERNUM.312@ @U.PERNUM.32P@ @U.PERNUM.43P@ @U.PERNUM.44P@
+
+! polarity
+@U.Polarity.Negative@ @U.Polarity.Positive@
+
+
+! Arapaho Lexicon
+@U.LEX.cebisee@
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Main Lexicon !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+LEXICON Root
+! only taking care of verbs for now
+! marks a word as verb, tagging it as verb and flagging it as verb, no change in form
+@U.POS.Verb@[VERB]:@U.POS.Verb@0     StemInit;
+
+
+LEXICON StemInit
+@U.LEX.cebisee@@U.StemType.AI@@U.ExceptionAI.No@:@U.LEX.cebisee@@U.StemType.AI@@U.ExceptionAI.No@0               Ordering;
+
+LEXICON Ordering
+@U.Order.AFF@[AFFIRMATIVE]:@U.Order.AFF@0       AffOrder;
+@U.Order.NAFF@[NON_AFFIRMATIVE]:@U.Order.NAFF@0  NaffOrder;
+@U.Order.IMP@[IMPERATIVE]:@U.Order.IMP@0        ImpOrder;
+@U.Order.CONJ@[CONJUNCT]:@U.Order.CONJ@0         ConjOrder;
+
+LEXICON AffOrder
+                Tense;
+
+LEXICON NaffOrder
+            Question;
+
+LEXICON ImpOrder
+        # ;
+
+LEXICON ConjOrder
+        # ;
+
+
+LEXICON Question
+@U.Mood.Question@[INTERROGATIVE]:@U.Mood.Question@koo^  NaffStemType;
+@U.Mood.Declarative@[DECLARATIVE]:@U.Mood.Declarative@0            NaffStemType ;
+
+
+LEXICON NaffStemType
+@U.StemType.II@[II]:0    NaffPersonII;
+@U.StemType.AI@[AI]:0    NaffPersonAI;
+@U.StemType.TI@[TI]:0    NaffPersonTI;
+@U.StemType.TA@[TA]:0    NaffPersonTA;
+
+LEXICON NaffPersonII
+@U.PERNUM.1SGS@[1SG-SUBJ]:@U.PERNUM.1SGS@^            Imperfective ;
+@U.PERNUM.1PLS@[1PL-SUBJ]:@U.PERNUM.1PLS@^            Imperfective ;
+
+LEXICON NaffPersonAI
+@U.PERNUM.1SGSAI@[1SG-SUBJ]:@U.PERNUM.1SGSAI@ne^      Imperfective ;
+@U.PERNUM.1PLSAI@[1PL-SUBJ]:@U.PERNUM.1PLSAI@ne^      Imperfective ;
+@U.PERNUM.12SAI@[1PL-INCL-SUBJ]:@U.PERNUM.12SAI@e^    Imperfective ;
+@U.PERNUM.2SGSAI@[2SG-SUBJ]:@U.PERNUM.2SGSAI@e^       Imperfective ;
+@U.PERNUM.2PLSAI@[2PL-SUBJ]:@U.PERNUM.2PLSAI@e^       Imperfective ;
+@U.PERNUM.3SGSAI@[3SG-SUBJ]:@U.PERNUM.3SGSAI@^        Imperfective ;
+@U.PERNUM.3PLSAI@[3PL-SUBJ]:@U.PERNUM.3PLSAI@^        Imperfective ;
+@U.PERNUM.4SGSAI@[4SG-SUBJ]:@U.PERNUM.4SGSAI@^        Imperfective ;
+@U.PERNUM.4PLSAI@[4PL-SUBJ]:@U.PERNUM.4PLSAI@^        Imperfective ;
+
+LEXICON NaffPersonTI
+@U.PERNUM.1SGS@[1SG-SUBJ]:@U.PERNUM.1SGS@ne^      Imperfective ;
+@U.PERNUM.1PLS@[1PL-SUBJ]:@U.PERNUM.1PLS@ne^      Imperfective ;
+@U.PERNUM.12S@[1PL-INCL-SUBJ]:@U.PERNUM.12S@e^  Imperfective ;
+@U.PERNUM.2SGS@[2SG-SUBJ]:@U.PERNUM.2SGS@e^       Imperfective ;
+@U.PERNUM.2PLS@[2PL-SUBJ]:@U.PERNUM.2PLS@e^       Imperfective ;
+@U.PERNUM.3SGS@[3SG-SUBJ]:@U.PERNUM.3SGS@^        Imperfective ;
+@U.PERNUM.3PLS@[3PL-SUBJ]:@U.PERNUM.3PLS@^        Imperfective ;
+@U.PERNUM.4SGS@[4SG-SUBJ]:@U.PERNUM.4SGS@^        Imperfective ;
+@U.PERNUM.4PLS@[4PL-SUBJ]:@U.PERNUM.4PLS@^        Imperfective ;
+
+LEXICON NaffPersonTA
+@U.PERNUM.1S2S@[1SG-SUBJ][2SG-OBJ]:@U.PERNUM.1S2S@e^   Imperfective ;
+@U.PERNUM.1S2P@[1SG-SUBJ][2PL-OBJ]:@U.PERNUM.1S2P@e^   Imperfective ;
+@U.PERNUM.2S1S@[2SG-SUBJ][1SG-OBJ]:@U.PERNUM.2S1S@e^   Imperfective ;
+@U.PERNUM.2P1S@[2PL-SUBJ][1SG-OBJ]:@U.PERNUM.2P1S@e^   Imperfective ;
+@U.PERNUM.1P2S@[1PL-SUBJ][2SG-OBJ]:@U.PERNUM.1P2S@e^   Imperfective ;
+@U.PERNUM.1P2P@[1PL-SUBJ][2PL-OBJ]:@U.PERNUM.1P2P@e^   Imperfective ;
+@U.PERNUM.2S1P@[2SG-SUBJ][1PL-OBJ]:@U.PERNUM.2S1P@e^   Imperfective ;
+@U.PERNUM.2P1P@[2PL-SUBJ][1PL-OBJ]:@U.PERNUM.2P1P@e^    Imperfective ;
+@U.PERNUM.1S3S@[1SG-SUBJ][3SG-OBJ]:@U.PERNUM.1S3S@ne^    Imperfective ;
+@U.PERNUM.1S3P@[1SG-SUBJ][3PL-OBJ]:@U.PERNUM.1S3P@ne^    Imperfective ;
+@U.PERNUM.2S3S@[2SG-SUBJ][3SG-OBJ]:@U.PERNUM.2S3S@e^    Imperfective ;
+@U.PERNUM.2S3P@[2SG-SUBJ][3PL-OBJ]:@U.PERNUM.2S3P@e^    Imperfective ;
+@U.PERNUM.3S4@[3SG-SUBJ][4P-OBJ]:@U.PERNUM.3S4@^    Imperfective ;
+@U.PERNUM.4S4@[4SG-SUBJ][4P-OBJ]:@U.PERNUM.4S4@^    Imperfective ;
+@U.PERNUM.1P3S@[1PL-SUBJ][3SG-OBJ]:@U.PERNUM.1P3S@ne^    Imperfective ;
+@U.PERNUM.1P3P@[1PL-SUBJ][3PL-OBJ]:@U.PERNUM.1P3P@ne^    Imperfective ;
+@U.PERNUM.123@[1PL-INCL-SUBJ][3P-OBJ]:@U.PERNUM.123@e^    Imperfective ;
+@U.PERNUM.2P3@[2PL-SUBJ][3P-OBJ]:@U.PERNUM.2P3@e^    Imperfective ;
+@U.PERNUM.3P4@[3PL-SUBJ][4P-OBJ]:@U.PERNUM.3P4@^    Imperfective ;
+@U.PERNUM.4P4@[4PL-SUBJ][4P-OBJ]:@U.PERNUM.4P4@^    Imperfective ;
+@U.PERNUM.3S1S@[3SG-SUBJ][1SG-OBJ]:@U.PERNUM.3S1S@ne^   Imperfective ;
+@U.PERNUM.3P1S@[3PL-SUBJ][1SG-OBJ]:@U.PERNUM.3P1S@ne^   Imperfective ;
+@U.PERNUM.3S2S@[3SG-SUBJ][2SG-OBJ]:@U.PERNUM.3S2S@e^   Imperfective ;
+@U.PERNUM.3P2S@[3PL-SUBJ][2SG-OBJ]:@U.PERNUM.3P2S@e^   Imperfective ;
+@U.PERNUM.43S@[4P-SUBJ][3SG-OBJ]:@U.PERNUM.43S@^   Imperfective ;
+@U.PERNUM.44S@[4P-SUBJ][4SG-OBJ]:@U.PERNUM.44S@^   Imperfective ;
+@U.PERNUM.3S1P@[3SG-SUBJ][1PL-OBJ]:@U.PERNUM.3S1P@ne^   Imperfective ;
+@U.PERNUM.3P1P@[3PL-SUBJ][1PL-OBJ]:@U.PERNUM.3P1P@ne^   Imperfective ;
+@U.PERNUM.312@[3P-SUBJ][1PL-INCL-OBJ]:@U.PERNUM.312@e^    Imperfective ;
+@U.PERNUM.32P@[3P-SUBJ][2PL-OBJ]:@U.PERNUM.32P@e^    Imperfective ;
+@U.PERNUM.43P@[4P-SUBJ][3PL-OBJ]:@U.PERNUM.43P@^    Imperfective ;
+@U.PERNUM.44P@[4P-SUBJ][4PL-OBJ]:@U.PERNUM.44P@^   Imperfective ;
+
+
+LEXICON Imperfective   ! just for NAFF
+@U.Order.NAFF@@U.TAM.Imperfective@[IMPERFECTIVE]:@U.TAM.Imperfective@ii^   Tense ;
+@U.Order.NAFF@@U.TAM.NotImperfective@:@U.TAM.NotImperfective@0      Tense ;
+!@U.Order.AFF@@U.TAM.Imperfective@[IMPERFECTIVE]:@U.TAM.Imperfective@ii^   Perfective ;
+!@U.Order.AFF@:0       Perfective ;
+
+
+LEXICON Tense
+@U.Order.AFF@@U.TAM.Past@[PAST]:@U.TAM.Past@ih^              ImperfectiveAff;
+@U.Order.AFF@@U.TAM.Present@[PRESENT]:@U.TAM.Present@^       ImperfectiveAff;
+@U.Order.AFF@@U.TAM.Future@[FUT]:@U.TAM.Future@eti^         ImperfectiveAff;
+@U.Order.NAFF@@U.TAM.Past@[PAST]:@U.TAM.Past@ih^              Negation;
+@U.Order.NAFF@@U.TAM.Present@[PRESENT]:@U.TAM.Present@^       Negation;
+@U.Order.NAFF@@U.TAM.Future@[FUT]:@U.TAM.Future@eti^         Negation;
+
+
+LEXICON ImperfectiveAff
+@U.Order.AFF@@U.TAM.Imperfective@[IMPERFECTIVE]:@U.TAM.Imperfective@ii^   VerbStem ;
+@U.Order.AFF@@U.TAM.NotImperfective@:@U.TAM.NotImperfective@0       Perfective ;
+
+LEXICON Negation
+@U.Polarity.Negative@[NEG]:@U.Polarity.Negative@ihoowu^         Perfective;
+@U.Polarity.Positive@:@U.Polarity.Positive@0                    Perfective;
+
+
+LEXICON Perfective
+@U.TAM.Imperfective@:0                                                              VerbStem;
+@U.TAM.NotImperfective@@U.TAM.Perfective@[PERFECTIVE]:@U.TAM.Perfective@iisi^       VerbStem;
+@U.TAM.NotImperfective@:0                                                           VerbStem;
+
+
+
+LEXICON VerbStem
+! input the lexicon, i.e. verb stems. mark the final boundary of stem, give each stem its stem type, and direct them to the next step.
+!oosoo@U.Stem.Final@@U.StemType.II@            StemType;
+!nihooyoo@U.Stem.Final@@U.StemType.II@             StemType;
+!iisetee@U.Stem.Final@@U.StemType.II@             StemType;
+!ni'oow@U.Stem.Final@@U.StemType.TA@@U.Backward.Yes@[to_agree_with_someone]:ni'oow@U.Stem.Final@@U.StemType.TA@@U.Backward.Yes@0          StemType;
+@U.LEX.cebisee@cebisee%[walk%]@U.Stem.Final@:cebisee@U.Stem.Final@0               StemType;
+!iinooniw@U.Stem.Final@@U.StemType.TA@@U.Backward.Yes@[be_mother_of]:iinooniw@U.Stem.Final@@U.StemType.TA@@U.Backward.Yes@0      StemType;
+!tei'eihi@U.Stem.Final@@U.ExceptionAI.No@@U.StemType.AI@         StemType;
+!beteee@U.Stem.Final@@U.ExceptionAI.No@@U.StemType.AI@         StemType;
+!bene@U.Stem.Final@@U.ExceptionAI.Yes@@U.StemType.AI@             StemType;
+!noohoot@U.Stem.Final@@U.StemType.TI@               StemType;
+!bii'in@U.Stem.Final@@U.StemType.TI@               StemType;
+!nii'eeneet@U.Stem.Final@@U.StemType.TI@               StemType;
+!noohow@U.Stem.Final@@U.StemType.TA@                 StemType;
+!cih’oh@U.Stem.Final@@U.StemType.TA@                 StemType;
+!nii’eenew@U.Stem.Final@@U.StemType.TA@                 StemType;
+
+
+LEXICON StemType
+! for each stem type, tag and flag it with its stem type.
+@U.Order.NAFF@:0       NaffPerson2;
+@U.Order.AFF@:0       Aff;
+
+
+
+
+
+
+
+LEXICON NaffPerson2
+@U.Order.NAFF@@U.StemType.II@:0    NaffPerson2II;
+@U.Order.NAFF@@U.StemType.AI@:0    NaffPerson2AI;
+@U.Order.NAFF@@U.StemType.TI@:0    NaffPerson2TI;
+@U.Order.NAFF@@U.StemType.TA@:0    NaffPerson2TA;
+
+LEXICON NaffPerson2II
+@U.PERNUM.1SGS@:0            # ;
+@U.PERNUM.1PLS@:^be         # ;
+
+LEXICON NaffPerson2AI
+@U.PERNUM.1SGSAI@:^      # ;
+@U.PERNUM.1PLSAI@:^be      # ;
+@U.PERNUM.12SAI@:^n  # ;
+@U.PERNUM.2SGSAI@:^       # ;
+@U.PERNUM.2PLSAI@:^be       # ;
+@U.PERNUM.3SGSAI@:^        # ;
+@U.PERNUM.3PLSAI@:^no'        # ;
+@U.PERNUM.4SGSAI@:^n        # ;
+@U.PERNUM.4PLSAI@:^níno        # ;
+
+LEXICON NaffPerson2TI
+@U.PERNUM.1SGS@:^      # ;
+@U.PERNUM.1PLS@:^éébe      # ;     !ask Andy, we have two forms for this: -éébe and -owúbe  , which one I should keep?
+@U.PERNUM.12S@:^ow  # ;
+@U.PERNUM.2SGS@:^       # ;
+@U.PERNUM.2PLS@:^éébe       # ;
+@U.PERNUM.3SGS@:^        # ;
+@U.PERNUM.3PLS@:^owuu        # ;
+@U.PERNUM.4SGS@:^owun        # ;
+@U.PERNUM.4PLS@:^owuníno        # ;
+
+LEXICON NaffPerson2TA
+@U.PERNUM.1S2S@:^é3   # ;
+@U.PERNUM.1S2P@:^e3ébe   # ;
+@U.PERNUM.2S1S@:^   # ;     !ask for Andy's confirmation for the alternation involved
+@U.PERNUM.2P1S@:^íbe   # ;
+@U.PERNUM.1P2S@:^eé   # ;
+@U.PERNUM.1P2P@:^eebe   # ;
+@U.PERNUM.2S1P@:^éi'ee   # ;
+@U.PERNUM.2P1P@:^éi'éébe    # ;
+@U.PERNUM.1S3S@:^oo    # ;
+@U.PERNUM.1S3P@:^óóno'    # ;
+@U.PERNUM.2S3S@:^oo    # ;
+@U.PERNUM.2S3P@:^óóno'    # ;
+@U.PERNUM.3S4@:^ee    # ;
+@U.PERNUM.4S4@:^een    # ;
+@U.PERNUM.1P3S@:^óóbe    # ;
+@U.PERNUM.1P3P@:^óóbe    # ;
+@U.PERNUM.123@:^oon    # ;
+@U.PERNUM.2P3@:^óóbe    # ;
+@U.PERNUM.3P4@:^eenó'    # ;
+@U.PERNUM.4P4@:^eeníno    # ;
+@U.PERNUM.3S1S@:^e'   # ;
+@U.PERNUM.3P1S@:^e'   # ;
+@U.PERNUM.3S2S@:^e'   # ;
+@U.PERNUM.3P2S@:^e'   # ;
+@U.PERNUM.43S@:^e'   # ;
+@U.PERNUM.44S@:^e'   # ;
+@U.PERNUM.3S1P@:^éíbe   # ;
+@U.PERNUM.3P1P@:^éíbe   # ;
+@U.PERNUM.312@:^éin    # ;
+@U.PERNUM.32P@:^éíbe    # ;
+@U.PERNUM.43P@:^ei'í    # ;
+@U.PERNUM.44P@:^ei'í   # ;
+
+
+
+
+
+
+
+LEXICON Aff
+! for the affirmative order, direct each stem type to its appropriate inflection paradigm
+@U.StemType.II@[II]:0     IIAff;
+@U.StemType.AI@[AI]:0     AIAff;
+@U.StemType.TI@[TI]:0     TIAff;
+@U.StemType.TA@[TA]:0     TAAff;
+
+
+
+!LEXICON Imp
+! for the imperative order, direct each stem type to its appropriate inflection paradigm
+!@U.StemType.II@:0     IIImp;
+!@U.StemType.AI@:0     AIImp;
+!@U.StemType.TI@:0     TIImp;
+!@U.StemType.TA@:0     TAImp;
+
+
+!LEXICON Conj
+! for the conjunct order, direct each stem type to its appropriate inflection paradigm
+!@U.StemType.II@:0     IIConj;
+!@U.StemType.AI@:0     AIConj;
+!@U.StemType.TI@:0     TIConj;
+!@U.StemType.TA@:0     TAConj;
+
+
+LEXICON IIAff
+! narrow down even more. for Affirmative Order, II verb stem class, direct dor each tense.
+! Present Affirmative undergoes Initial Change
+@U.TAM.Present@:0     ICAff;
+@U.TAM.Past@:0        IIAFFNUM;
+@U.TAM.Future@:0        IIAFFNUM;
+
+
+LEXICON AIAff
+! narrow down even more. for Affirmative Order, II verb stem class, direct dor each tense.
+! Present Affirmative undergoes Initial Change
+@U.TAM.Present@:0         ICAff;
+@U.TAM.Past@:0        AIAFFPERNUM;
+@U.TAM.Future@:0        AIAFFPERNUM;
+
+
+LEXICON TIAff
+! narrow down even more. for Affirmative Order, II verb stem class, direct dor each tense.
+! Present Affirmative undergoes Initial Change
+@U.TAM.Present@:0    ICAff;
+@U.TAM.Past@:0        TIAFFPERNUM;
+@U.TAM.Future@:0        TIAFFPERNUM;
+
+
+LEXICON TAAff
+! narrow down even more. for Affirmative Order, II verb stem class, direct dor each tense.
+! Present Affirmative undergoes Initial Change
+@U.TAM.Present@:0    ICAff;
+@U.TAM.Past@:0        TAAFFPERNUM;
+@U.TAM.Future@:0        TAAFFPERNUM;
+
+
+LEXICON ICAff
+!flag IC forms. for each verb stem class, tag with perfect and progressive aspect (no morphological change involved) + IC tag
+! then direct the tagged upper to the inflection paradigm of each stem type.
+@U.IC.Yes@@U.StemType.II@[PERFECT][IC]:@U.IC.Yes@0      IIAFFNUM;
+@U.IC.Yes@@U.StemType.II@[PROGRESSIVE][IC]:@U.IC.Yes@0      IIAFFNUM;
+@U.IC.Yes@@U.StemType.AI@[PERFECT][IC]:@U.IC.Yes@0          AIAFFPERNUM;
+@U.IC.Yes@@U.StemType.AI@[PROGRESSIVE][IC]:@U.IC.Yes@0      AIAFFPERNUM;
+@U.IC.Yes@@U.StemType.TI@[PERFECT][IC]:@U.IC.Yes@0      TIAFFPERNUM;
+@U.IC.Yes@@U.StemType.TI@[PROGRESSIVE][IC]:@U.IC.Yes@0      TIAFFPERNUM;
+@U.IC.Yes@@U.StemType.TA@[PERFECT][IC]:@U.IC.Yes@0      TAAFFPERNUM;
+@U.IC.Yes@@U.StemType.TA@[PROGRESSIVE][IC]:@U.IC.Yes@0      TAAFFPERNUM;
+
+
+LEXICON IIAFFNUM
+[3SG-SUBJ]:^'      # ;
+[3PL-SUBJ]:^'i     # ;
+
+LEXICON AIAFFPERNUM
+[1SG-SUBJ]:^noo   # ;
+[1PL-EXCL-SUBJ][OLD_VERSION]:^ni'   # ;
+[1PL-EXCL-SUBJ]:^'   # ;
+[1PL-INCL-SUBJ]:^no'     # ;
+[2SG-SUBJ]:^n     # ;
+[2PL-SUBJ]:^nee   # ;
+[4SG-SUBJ]:^ní3   # ;
+[4PL-SUBJ]:^ní3i  # ;
+@U.ExceptionAI.Yes@[IRREGULAR]:0    AIAFFPERNUMEXCEPTION ;
+@U.ExceptionAI.No@:0     AIAFFPERNUMREGULAR ;
+
+LEXICON AIAFFPERNUMREGULAR
+[3SG-SUBJ]:^t     # ;
+[3PL-SUBJ]:^3i'    # ;
+
+
+LEXICON AIAFFPERNUMEXCEPTION
+[3SG-SUBJ]:^'     # ;
+[3PL-SUBJ]:^'i    # ;
+
+
+! NUM of OBJ is inflected through reduplication (which is a type of derivation), which I'm not going to cover for now. 
+! For [1PL-EXCL-SUBJ], some speakers drop final vowel(s) and consonant of the stem. Some don't. We only generate the one that doesn't drop it.
+
+LEXICON TIAFFPERNUM
+[1SG-SUBJ][3P-OBJ]:^owoo   # ;
+[1PL-EXCL-SUBJ][3P-OBJ][OLD_VERSION]:^owú'   # ;
+[1PL-EXCL-SUBJ][3P-OBJ]:^owúni'   # ;
+[1PL-INCL-SUBJ][3P-OBJ]:^owúno'     # ;
+[2SG-SUBJ][3P-OBJ]:^ow     # ;
+[2PL-SUBJ][3P-OBJ]:^owúnee   # ;
+[3SG-SUBJ][3P-OBJ]:^o'     # ;
+[3PL-SUBJ][3P-OBJ]:^óú'u    # ;
+[4SG-SUBJ][3P-OBJ]:^owuní3   # ;
+[4PL-SUBJ][3P-OBJ]:^owuní3i  # ;
+
+
+LEXICON TAAFFPERNUM
+@U.ActionType.Local@@U.Backward.No@[LocalAction]:@U.ActionType.Local@0     TAAffLocal;
+@U.ActionType.Direct@@U.Backward.No@[DirectAction]:@U.ActionType.Direct@0     TAAffDirect;
+@U.ActionType.Inverse@@U.Backward.No@[InverseAction]:@U.ActionType.Inverse@0     TAAffInverse;
+@U.Backward.Yes@[BackwardDirectionOfAction]:@U.Backward.Yes@0          TAAffBackward;
+
+
+LEXICON TAAffBackward
+[1SG-SUBJ][2SG-OBJ]:^ín   # ;
+[1SG-SUBJ][2PL-OBJ]:^ínee   # ;
+[2SG-SUBJ][1SG-OBJ]:^é3en   # ;
+[2PL-SUBJ][1SG-OBJ]:^e3énee   # ;
+[1PL-SUBJ][2SG-OBJ]:^éi'een   # ;
+[1PL-SUBJ][2PL-OBJ]:^éi'éénee   # ;
+[2SG-SUBJ][1PL-OBJ]:^een   # ;
+[2PL-SUBJ][1PL-OBJ]:^éénee   # ;
+[1SG-SUBJ][3SG-OBJ]:^éínoo   # ;
+[1SG-SUBJ][3PL-OBJ]:^í3i'   # ;
+[2SG-SUBJ][3SG-OBJ]:^éín   # ;
+[2SG-SUBJ][3PL-OBJ]:^éinóni   # ;
+[3SG-SUBJ][4P-OBJ]:^éít   # ;
+[4SG-SUBJ][4P-OBJ]:^éiní3   # ;
+[1PL-SUBJ][3SG-OBJ]:^éi'eet   # ;
+[1PL-SUBJ][3PL-OBJ]:^éi'éé3i'   # ;
+[1PL-INCL-SUBJ][3P-OBJ]:^éíno'   # ;
+[2PL-SUBJ][3P-OBJ]:^éínee   # ;
+[3PL-SUBJ][4P-OBJ]:^éí3i'   # ;
+[4PL-SUBJ][4P-OBJ]:^éiní3i   # ;
+[3SG-SUBJ][1SG-OBJ]:^o'   # ;
+[3SG-SUBJ][1SG-OBJ]:^ó'   # ;
+[3PL-SUBJ][1SG-OBJ]:^óú'u   # ;
+[3SG-SUBJ][2SG-OBJ]:^ót   # ;
+[3PL-SUBJ][2SG-OBJ]:^óti   # ;
+[4P-SUBJ][3SG-OBJ]:^oot   # ;
+[4P-SUBJ][4SG-OBJ]:^ooní3   # ;
+[3SG-SUBJ][1PL-OBJ]:^eet   # ;
+[3PL-SUBJ][1PL-OBJ]:^éé3i'   # ;
+[3P-SUBJ][1PL-INCL-OBJ]:^óóno'   # ;
+[3P-SUBJ][2PL-OBJ]:^óónee   # ;
+[4P-SUBJ][3PL-OBJ]:^óó3i'   # ;
+[4P-SUBJ][4PL-OBJ]:^ooní3i  # ;
+
+
+LEXICON TAAffLocal
+[1SG-SUBJ][2SG-OBJ]:^é3en   # ;
+[1SG-SUBJ][2PL-OBJ]:^e3énee   # ;
+[2SG-SUBJ][1SG-OBJ]:^ín   # ;
+[2PL-SUBJ][1SG-OBJ]:^ínee   # ;
+[1PL-SUBJ][2SG-OBJ]:^een   # ;
+[1PL-SUBJ][2PL-OBJ]:^éénee   # ;
+[2SG-SUBJ][1PL-OBJ]:^éi'een   # ;
+[2PL-SUBJ][1PL-OBJ]:^éi'éénee   # ;
+
+
+LEXICON TAAffDirect
+[1SG-SUBJ][3SG-OBJ]:^o'   # ;
+[1SG-SUBJ][3SG-OBJ]:^ó'   # ;
+[1SG-SUBJ][3PL-OBJ]:^óú'u   # ;
+[2SG-SUBJ][3SG-OBJ]:^ót   # ;
+[2SG-SUBJ][3PL-OBJ]:^óti   # ;
+[3SG-SUBJ][4P-OBJ]:^oot   # ;
+[4SG-SUBJ][4P-OBJ]:^ooní3   # ;
+[1PL-SUBJ][3SG-OBJ]:^eet   # ;
+[1PL-SUBJ][3PL-OBJ]:^éé3i'   # ;
+[1PL-INCL-SUBJ][3P-OBJ]:^óóno'   # ;
+[2PL-SUBJ][3P-OBJ]:^óónee   # ;
+[3PL-SUBJ][4P-OBJ]:^óó3i'   # ;
+[4PL-SUBJ][4P-OBJ]:^ooní3i   # ;
+
+
+LEXICON TAAffInverse
+[3SG-SUBJ][1SG-OBJ]:^éínoo   # ;
+[3PL-SUBJ][1SG-OBJ]:^í3i'   # ;
+[3SG-SUBJ][2SG-OBJ]:^éín   # ;
+[3PL-SUBJ][2SG-OBJ]:^éinóni   # ;
+[4P-SUBJ][3SG-OBJ]:^éít   # ;
+[4P-SUBJ][4SG-OBJ]:^éiní3   # ;
+[3SG-SUBJ][1PL-OBJ]:^éi'eet   # ;
+[3PL-SUBJ][1PL-OBJ]:^éi'éé3i'   # ;
+[3P-SUBJ][1PL-INCL-OBJ]:^éíno'   # ;
+[3P-SUBJ][2PL-OBJ]:^éínee   # ;
+[4P-SUBJ][3PL-OBJ]:^éí3i'   # ;
+[4P-SUBJ][4PL-OBJ]:^éiní3i   # ;
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!! Non-Affirmative Order !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!LEXICON IINaff
+![1SG-SUBJ]:^    # ;
+![1PL-SUBJ]:^no  # ;
+
+!LEXICON AINaff
+![1SG-SUBJ]:^    # ;
+![1PL-SUBJ]:^    # ;
+![1PL-INCL-SUBJ]:^   # ;
+![2SG-SUBJ]:^    # ;
+![2PL-SUBJ]:^    # ;
+![3SG-SUBJ]:^    # ;
+![3PL-SUBJ]:^    # ;
+![4SG-SUBJ]:^    # ;
+![4PL-SUBJ]:^    # ;

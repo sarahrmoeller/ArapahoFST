@@ -1,0 +1,126 @@
+read lexc arapaho2.lexc
+set show-flags ON
+def Lex1;
+
+
+def Consonant [ b | t | k | ' | c | 3 | s | x | h | n | w | y ];
+def Vowel [ e | i | o | u ];
+def Diph [ e i | o u | o e | i e ];
+def LV [ e e | i i | o o | u u ];
+def LDiph [ e i i | o u u | o e e | i e e ] ;
+def LongFrontV [e e | i i ];
+def Alphabet Vowel | Consonant ;
+
+
+
+
+def IC1 i -> i i , o -> o o , u -> u u , e -> e e || "@U.POS.Verb@" ?* "@U.Order.AFF@" "@U.TENSE.Present@" "@U.StemInitial.Yes@" %^* Consonant* _ Consonant+ ?* "@U.StemFinal.Yes@" "@U.Order.AFF@" ?* "@U.TENSE.Present@" ?* "@U.IC.Yes@" ?* ;
+def IC2 [..] -> %^ e n %^ || "@U.POS.Verb@" ?* "@U.Order.AFF@" "@U.TENSE.Present@" "@U.StemInitial.Yes@" %^* Consonant _ [ e e | i i | o o | u u | e i | o u | o e | i e ] [?* - %^]+ "@U.StemFinal.Yes@" "@U.Order.AFF@" ?* "@U.TENSE.Present@" ?* "@U.IC.Yes@" ?* ;
+def IC3 [..] -> %^ e n %^ || "@U.POS.Verb@" ?* "@U.Order.AFF@" "@U.TENSE.Present@" "@U.StemInitial.Yes@" %^* Consonant _ Vowel h Consonant+ ?* "@U.StemFinal.Yes@" "@U.Order.AFF@" ?* "@U.TENSE.Present@" ?* "@U.IC.Yes@" ?* ;
+
+
+!def Preverbal1 h %^ -> h %^ ' || ?* Vowel _ Vowel ?* "@U.StemFinal.Yes@" ?* ;
+!def Preverbal2 e t i %^ -> e t i n %^ || "@U.POS.Verb@" ?* "@U.TENSE.Future@" _ Vowel ?* ;
+
+def Past1 [..] -> n || "@U.POS.Verb@" ?* "@U.Order.AFF@" "@U.Mood.Indicative@" "@U.Order.AFF@" "@U.TENSE.Past@" _ i h %^ ?* "@U.StemInitial.Yes@" ?* ;
+def Past2 [..] -> h || "@U.POS.Verb@" ?* "@U.Order.NAFF@" "@U.Mood.Indicative@" ?* \%^ "@U.Order.NAFF@" "@U.TENSE.Past@" _ i h %^ ?* "@U.StemInitial.Yes@" ?* ;
+
+!def Future1  e t i -> h e e t n || "@U.POS.Verb@" ?* "@U.TENSE.Future@" _ %^ Vowel ?* "@U.StemFinal.Yes@" ?* ;
+!def Future2 e t i -> [h e e t] || "@U.POS.Verb@" ?* "@U.TENSE.Future@" _ %^ ?* "@U.StemFinal.Yes@" ?* ;
+
+def Imperfective1 i i -> n i i || "@U.POS.Verb@" ?* "@U.Order.AFF@" "@U.Mood.Indicative@" ?* "@U.Order.AFF@" "@U.TENSE.Present@" "@U.ASPECT.Imperfective@" _ %^ ?* ;
+def Imperfective2 i i -> h i i || "@U.POS.Verb@" ?* "@U.Order.NAFF@" "@U.Mood.Indicative@" ?* "@U.ASPECT.Imperfective@" _ %^ ?* ;
+
+!def Perfective i i s -> h e n i i s || "@U.POS.Verb@" ?* "@U.TENSE.Present@" "@U.ASPECT.Perfective@" %^ _ %^ ?* ;
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!! General Phonological Alternation !!!!
+
+def Devoicing b -> p || _ Consonant  , _ .#. ;
+
+def C1 [b | c | n | s | t | 3 | y];
+def uFilter ~[?* C1 u ?*];
+
+def C2 [k | w | x];
+def V2 [i | y];
+def iFilter ~[?* C2 V2 ?*];
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!! Intermorphemic Rules !!!!!!!!!!!!
+
+!!!! i-epenthesis Rule !!!!!
+def C3 Consonant - h;
+def C4 Consonant - y;
+def Rule1 [..] -> i || ?* C3 _ %^ C4 ;
+
+def Rule2 n -> 0 || _ "@U.StemFinal.Yes@" ?* %^ y ?*;
+!def Rule2b n -> 0 || _ "@U.StemFinal.Yes@" ?* "U.StemInitial.Yes" y ?* ;
+
+!!! follows Rule1 !!!
+def Rule3 y @> 0 || _ %^ \%^* %^ V2 ;
+def Rule3b y @> 0 || _ %^ V2  ?* ;
+
+!!! Diphthongization Rule !!!
+def Rule4 e e -> e i || _ %^ \%^* %^ (') i ,, e -> e i || \e _ %^ \%^* %^ (') i ,, o o -> o i || _ %^ \%^* %^ (') i ,, o -> o i || \o _ %^ \%^* %^ (') i ;
+
+
+
+!!! Clash of Vowels Rule !!!
+def 1V [e | i | o | u];
+def 2V [e e | i i | o o | u u | e i | o u | o e | i e];
+def 3V [e i i | o u u | o e e | i e e];
+def Rule5 2V -> 0 || 2V %^+ _ ?* ,, 1V -> 0 || 2V %^+ _ \1V ,, 1V -> 0 || 3V %^+ _ ?* ,, 1V -> 0 || \1V _ %^+ 2V ?* ;
+
+
+!!! Vowel Harmony Rule (i~u) - progressive !!!
+def backC [k | w | x | 3 | h | '] ;
+!def Rule6a i -> u, i i -> u u || ?* o _ %^ ?* ;
+!def Rule6b i -> u, i i -> u u || ?* o u %^ ?* %^ (') _ ?* ;
+def Rule6c i @-> u, i i @-> u u || o backC+ %^+ \%^* _ ?* ;
+def Rule6d i @> u || [o|u] [backC - 3] %^* \%^* _ ?* ;
+
+!def Rule6e Rule6c .o. Rule6d;
+
+
+
+!!! Consonant Mutation Rules !!!
+def frontV [e | i | y];
+def Rule7a k -> c || \o _ %^ \%^* %^ frontV ?* , o _ %^ \%^* %^ [i | y] ?* ,, x -> s || \o _ %^ \%^* %^ frontV ?* , o _ %^ \%^* %^ [i | y] ?* ,, w -> b || _ %^ \%^* %^ frontV ?* ;
+
+def Rule7b 3 -> s || %^ [?+ - [woosoo | o]] _ \%^* %^ (%^) [i | y] ;
+
+def Rule7c 3 -> x || %^ \%^* o _ \%^* %^ (%^) u ?* ;
+
+! take care of see exception later
+def Rule7d t -> 3 || _ %^ \%^* %^ [i | y] [?* - [%^ s e e %^]] ;
+
+
+
+!!! Vowel Harmony Rules (e~o) - regressive !!!
+!inside the stem, internal changes like IC
+!def Rule8a e -> o || %^ ?* _ Consonant* %^ \%^* %^ o ?* ;
+! across morpheme boundaries
+def Rule8b e -> o || ?* _ [backC - 3] %^ \%^* %^ o ?* ;
+
+def Rule9 y -> 0 || Consonant %^ \%^* %^ _ ;
+
+
+def VowelInitial [..] @-> h || ?* \%^ "@U.StemInitial.Yes@" %^ _ Vowel+ ?* %^ "@U.StemFinal.Yes@" ,, [..] @> h || \Alphabet _ Vowel Alphabet* %^ [\%^* (%^)]* "@U.StemInitial.Yes@" %^ ;
+
+! | "@U.StemInitial.Yes@" %^]
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!! Cleaning up the morpheme boundaries !!!!!!!!!!!!!!!!!!!!!!!
+
+def Cleanitup %^ -> 0 || ?* _ ?*;
+
+
+!!!!! Composition of the lexicon with all the (morpho)phonological rules !!!!
+def Lex2 Lex1 .o. IC2 .o. IC1 .o. IC3 .o. Past1 .o. Past2 .o. Imperfective1 .o. Imperfective2 .o. Devoicing .o. uFilter .o. iFilter .o. Rule1 .o. Rule2 .o. Rule3 .o. Rule3b .o. Rule4 .o. Rule5 .o. Rule6c .o. Rule6d .o. Rule7a .o. Rule7b .o. Rule7c .o. Rule7d .o. Rule8b .o. Rule9 .o. VowelInitial;
+
+!re Lex2;
+
+re `[Lex2, %^, 0];
+!re Lex2 .o. Cleanitup;
+!eliminate flags
+

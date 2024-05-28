@@ -1,0 +1,292 @@
+Multichar_Symbols [VERB] [II] [IA] [TI] [TA]
+[AFFIRMATIVE] [NON_AFFIRMATIVE] [IMPERATIVE] [CONJUNCT] [SUBJUNCTIVE] [ITERATIVE]
+[SG] [PL]
+[1SG-SUBJ] [2SG-SUBJ] [3SG-SUBJ] [4SG-SUBJ] [1PL-SUBJ] [2PL-SUBJ] [3PL-SUBJ] [4PL-SUBJ] [1PL-EXCL-SUBJ] [1PL-INCL-SUBJ]
+[1SG-OBJ] [2SG-OBJ] [3SG-OBJ] [4SG-OBJ] [1PL-OBJ] [2PL-OBJ] [3PL-OBJ] [4PL-OBJ] [1PL-EXCL-OBJ] [1PL-INCL-OBJ]
+[3P-OBJ] [4P-OBJ] [3P-SUBJ] [4P-SUBJ] 
+[INCL] [EXCL]
+[NEG] [PROCLITIC] [IMPERF] [INTERR] [THEME_MARKER]
+[PAST] [FUTURE] [INF]
+[PRESENT] [PROGRESSIVE] [PERFECTIVE] [IMPERFECTIVE] [SIMPLE]
+[PERSON]
+[IC]
+[LocalAction] [DirectAction] [InverseAction]
+[IRREGULAR] [OLD_VERSION]
+@U.POS.Verb@
+@U.StemType.II@ @U.StemType.AI@ @U.StemType.TI@ @U.StemType.TA@
+@U.Order.AFF@ @U.Order.NAFF@ @U.Order.IMP@ @U.Order.CONJ@
+@U.TAM.PresPerf@ @U.TAM.PresProg@
+@U.TAM.Past@ @U.TAM.Present@ @U.TAM.Future@
+@U.TAM.Perfect@ @U.TAM.Prog@
+@U.Stem.Initial@ @U.Stem.Final@
+@U.IC.Yes@
+@U.ActionType.Local@ @U.ActionType.Direct@ @U.ActionType.Inverse@ 
+@U.TAM.Perfective@ @U.TAM.Imperfective@ @U.TAM.Simple@
+@U.ExceptionAI.Yes@ @U.ExceptionAI.No@
+
+
+LEXICON Root
+@U.POS.Verb@[VERB]:@U.POS.Verb@0     Verb;
+
+
+LEXICON Verb
+                        TAM;
+
+
+LEXICON TAM
+!@U.TAM.Past@[PAST]:@U.TAM.Past@ih^              VerbStem;
+@U.TAM.Present@[PRESENT]:@U.TAM.Present@^       VerbStem;
+!@U.TAM.Future@[FUT]:@U.TAM.Future@eti^         VerbStem;
+
+
+!LEXICON Aspect
+!@U.TAM.Imperfective@[IMPERFECTIVE]:@U.TAM.Imperfective@ii^      VerbStem;
+!@U.TAM.Perfective@[PERFECTIVE]:@U.TAM.Perfective@iis^      VerbStem;
+!@U.TAM.Simple@[SIMPLE]:@U.TAM.Simple@0                     VerbStem;
+
+
+LEXICON VerbStem
+!oosoo@U.Stem.Final@@U.StemType.II@            StemType;
+!nihooyoo@U.Stem.Final@@U.StemType.II@             StemType;
+!iisetee@U.Stem.Final@@U.StemType.II@             StemType;
+!tei'eihi@U.Stem.Final@@U.ExceptionAI.No@@U.StemType.AI@         StemType;
+!beteee@U.Stem.Final@@U.ExceptionAI.No@@U.StemType.AI@         StemType;
+!bene@U.Stem.Final@@U.ExceptionAI.Yes@@U.StemType.AI@             StemType;
+!noohoot@U.Stem.Final@@U.StemType.TI@               StemType;
+!bii'in@U.Stem.Final@@U.StemType.TI@               StemType;
+!nii'eeneet@U.Stem.Final@@U.StemType.TI@               StemType;
+!noohow@U.Stem.Final@@U.StemType.TA@                 StemType;
+cih’oh@U.Stem.Final@@U.StemType.TA@                 StemType;
+!nii’eenew@U.Stem.Final@@U.StemType.TA@                 StemType;
+
+LEXICON StemType
+@U.StemType.II@[II]:@U.StemType.II@0    Order;
+@U.StemType.AI@[AI]:@U.StemType.AI@0    Order;
+@U.StemType.TI@[TI]:@U.StemType.TI@0    Order;
+@U.StemType.TA@[TA]:@U.StemType.TA@0    Order;
+
+
+LEXICON Order
+@U.Order.AFF@[AFFIRMATIVE]:@U.Order.AFF@0       Aff;
+!@U.Order.NAFF@[NON_AFFIRMATIVE]:@U.Order.NAFF@0  Naff;
+!@U.Order.IMP@[IMPERATIVE]:@U.Order.IMP@0        Imp;
+!@U.Order.CONJ@[CONJUNCT]:@U.Order.CONJ@0         Conj;
+
+
+LEXICON Aff
+@U.StemType.II@     IIAff;
+@U.StemType.AI@     AIAff;
+@U.StemType.TI@     TIAff;
+@U.StemType.TA@     TAAff;
+
+
+LEXICON Naff
+@U.StemType.II@     IINaff;
+@U.StemType.AI@     AINaff;
+@U.StemType.TI@     TINaff;
+@U.StemType.TA@     TANaff;
+
+
+LEXICON Imp
+@U.StemType.II@     IIImp;
+@U.StemType.AI@     AIImp;
+@U.StemType.TI@     TIImp;
+@U.StemType.TA@     TAImp;
+
+
+LEXICON Conj
+@U.StemType.II@     IIConj;
+@U.StemType.AI@     AIConj;
+@U.StemType.TI@     TIConj;
+@U.StemType.TA@     TAConj;
+
+
+LEXICON IIAff
+@U.TAM.Present@:@U.TAM.Present@0    ICAff;
+@U.TAM.Past@        IIAFFNUM;
+@U.TAM.Future@        IIAFFNUM;
+
+
+!P.477 > include the irregular endings in the lexicon
+LEXICON AIAff
+@U.TAM.Present@:@U.TAM.Present@0    ICAff;
+@U.TAM.Past@        AIAFFPERNUM;
+@U.TAM.Future@        AIAFFPERNUM;
+
+
+LEXICON TIAff
+@U.TAM.Present@:@U.TAM.Present@0    ICAff;
+@U.TAM.Past@        TIAFFPERNUM;
+@U.TAM.Future@        TIAFFPERNUM;
+
+
+LEXICON TAAff
+@U.TAM.Present@:@U.TAM.Present@0    ICAff;
+@U.TAM.Past@        TAAFFPERNUM;
+@U.TAM.Future@        TAAFFPERNUM;
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!Non-Affirmative!!!!!
+!LEXICON IINaff
+!@U.TAM.Present@:@U.TAM.Present@0    IC;
+!@U.TAM.Past@        IINAFFNUM;
+!@U.TAM.Future@        IINAFFNUM;
+
+
+!P.477 > include the irregular endings in the lexicon
+!LEXICON AINaff
+!@U.TAM.Present@:@U.TAM.Present@0    IC;
+!@U.TAM.Past@        AINAFFPERNUM;
+!@U.TAM.Future@        AINAFFPERNUM;
+
+
+!LEXICON TINaff
+!@U.TAM.Present@:@U.TAM.Present@0    IC;
+!@U.TAM.Past@        TINAFFPERNUM;
+!@U.TAM.Future@        TINAFFPERNUM;
+
+
+!LEXICON TANaff
+!@U.TAM.Present@:@U.TAM.Present@0    IC;
+!@U.TAM.Past@        TANAFFPERNUM;
+!@U.TAM.Future@        TANAFFPERNUM;
+
+!!!!!!
+
+LEXICON ICAff
+@U.IC.Yes@@U.StemType.II@[PERFECT][IC]:@U.IC.Yes@@U.StemType.II@0      IIAFFNUM;
+!@U.IC.Yes@@U.StemType.II@[PROGRESSIVE][IC]:@U.IC.Yes@@U.StemType.II@0      IIAFFNUM;
+@U.IC.Yes@@U.StemType.AI@[PERFECT][IC]:@U.IC.Yes@@U.StemType.AI@0      AIAFFPERNUM;
+!@U.IC.Yes@@U.StemType.AI@[PROGRESSIVE][IC]:@U.IC.Yes@@U.StemType.AI@0      AIAFFPERNUM;
+@U.IC.Yes@@U.StemType.TI@[PERFECT][IC]:@U.IC.Yes@@U.StemType.TI@0      TIAFFPERNUM;
+!@U.IC.Yes@@U.StemType.TI@[PROGRESSIVE][IC]:@U.IC.Yes@@U.StemType.TI@0      TIAFFPERNUM;
+@U.IC.Yes@@U.StemType.TA@[PERFECT][IC]:@U.IC.Yes@@U.StemType.TA@0      TAAFFPERNUM;
+!@U.IC.Yes@@U.StemType.TA@[PROGRESSIVE][IC]:@U.IC.Yes@@U.StemType.TA@0      TAAFFPERNUM;
+
+
+LEXICON IIAFFNUM
+[3SG-SUBJ]:^'      # ;
+[3PL-SUBJ]:^'i     # ;
+
+LEXICON AIAFFPERNUM
+[1SG-SUBJ]:^noo   # ;
+[1PL-EXCL-SUBJ][OLD_VERSION]:^ni'   # ;
+[1PL-EXCL-SUBJ]:^'   # ;
+[1PL-INCL-SUBJ]:^no'     # ;
+[2SG-SUBJ]:^n     # ;
+[2PL-SUBJ]:^nee   # ;
+[4SG-SUBJ]:^ni3   # ;
+[4PL-SUBJ]:^ni3i  # ;
+@U.ExceptionAI.Yes@    AIAFFPERNUMEXCEPTION ;
+@U.ExceptionAI.No@     AIAFFPERNUMREGULAR ;
+
+LEXICON AIAFFPERNUMREGULAR
+[3SG-SUBJ]:^t     # ;
+[3PL-SUBJ]:^3i'    # ;
+
+
+LEXICON AIAFFPERNUMEXCEPTION
+[3SG-SUBJ]:^'     # ;
+[3PL-SUBJ]:^'i    # ;
+
+
+! NUM of OBJ is inflected through reduplication (which is a type of derivation), which I'm not going to cover for now. 
+! For [1PL-EXCL-SUBJ], some speakers drop final vowel(s) and consonant of the stem. Some don't. I only generate the one that doesn't drop it.
+
+LEXICON TIAFFPERNUM
+[1SG-SUBJ][3P-OBJ]:^owoo   # ;
+[1PL-EXCL-SUBJ][3P-OBJ][OLD_VERSION]:^owu'   # ;
+[1PL-EXCL-SUBJ][3P-OBJ]:^owuni'   # ;
+[1PL-INCL-SUBJ][3P-OBJ]:^owuno'     # ;
+[2SG-SUBJ][3P-OBJ]:^ow     # ;
+[2PL-SUBJ][3P-OBJ]:^owunee   # ;
+[3SG-SUBJ][3P-OBJ]:^o'     # ;
+[3PL-SUBJ][3P-OBJ]:^ou'u    # ;
+[4SG-SUBJ][3P-OBJ]:^owuni3   # ;
+[4PL-SUBJ][3P-OBJ]:^owuni3i  # ;
+
+
+LEXICON TAAFFPERNUM
+@U.ActionType.Local@[LocalAction]:@U.ActionType.Local@0     TAAffLocal;
+@U.ActionType.Direct@[DirectAction]:@U.ActionType.Direct@0     TAAffDirect;
+@U.ActionType.Inverse@[InverseAction]:@U.ActionType.Inverse@0     TAAffInverse;
+
+
+LEXICON TAAffLocal
+[1SG-SUBJ][2SG-OBJ]:^e3en   # ;
+[1SG-SUBJ][2PL-OBJ]:^e3enee   # ;
+[2SG-SUBJ][1SG-OBJ]:^in   # ;
+[2PL-SUBJ][1SG-OBJ]:^inee   # ;
+[1PL-SUBJ][2SG-OBJ]:^een   # ;
+[1PL-SUBJ][2PL-OBJ]:^eenee   # ;
+[2SG-SUBJ][1PL-OBJ]:^ei'een   # ;
+[2PL-SUBJ][1PL-OBJ]:^ei'eenee   # ;
+
+
+LEXICON TAAffDirect
+[1SG-SUBJ][3SG-OBJ]:^o'   # ;
+[1SG-SUBJ][3PL-OBJ]:^ou'u   # ;
+[2SG-SUBJ][3SG-OBJ]:^ot   # ;
+[2SG-SUBJ][3PL-OBJ]:^oti   # ;
+[3SG-SUBJ][4P-OBJ]:^oot   # ;
+[4SG-SUBJ][4P-OBJ]:^ooni3   # ;
+[1PL-SUBJ][3SG-OBJ]:^eet   # ;
+[1PL-SUBJ][3PL-OBJ]:^ee3i'   # ;
+[1PL-INCL-SUBJ][3P-OBJ]:^oono'   # ;
+[2PL-SUBJ][3P-OBJ]:^oonee   # ;
+[3PL-SUBJ][4P-OBJ]:^oo3i'   # ;
+[4PL-SUBJ][4P-OBJ]:^ooni3i   # ;
+
+
+LEXICON TAAffInverse
+[3SG-SUBJ][1SG-OBJ]:^einoo   # ;
+[3PL-SUBJ][1SG-OBJ]:^i3i'   # ;
+[3SG-SUBJ][2SG-OBJ]:^ein   # ;
+[3PL-SUBJ][2SG-OBJ]:^einoni   # ;
+[4P-SUBJ][3SG-OBJ]:^eit   # ;
+[4P-SUBJ][4SG-OBJ]:^eini3   # ;
+[3SG-SUBJ][1PL-OBJ]:^ei'eet   # ;
+[3PL-SUBJ][1PL-OBJ]:^ei'ee3i'   # ;
+[3P-SUBJ][1PL-INCL-OBJ]:^eino'   # ;
+[3P-SUBJ][2PL-OBJ]:^einee   # ;
+[4P-SUBJ][3PL-OBJ]:^ei3i'   # ;
+[4P-SUBJ][4PL-OBJ]:^eini3i   # ;
+
+!LEXICON IINAFFNUM
+![3SG-SUBJ]:^      # ;
+![3PL-SUBJ]:^no     # ;
+
+
+!LEXICON AINAFFPERNUM
+![1SG-SUBJ]:^ne   # ;
+![1PL-EXCL-SUBJ]:^'   # ;
+![1PL-EXCL-SUBJ]:^ni'   # ;
+![1PL-INCL-SUBJ]:^no'     # ;
+![2SG-SUBJ]:^n     # ;
+![2PL-SUBJ]:^nee   # ;
+![3SG-SUBJ]:^t     # ;
+![3SG-SUBJ]:^'     # ;
+![3PL-SUBJ]:^3i'    # ;
+![3PL-SUBJ]:^'i    # ;
+![4SG-SUBJ]:^ni3   # ;
+![4PL-SUBJ]:^ni3i  # ;
+
+
+!LEXICON TINAFFPERNUM
+
+
+!LEXICON TANAFFPERNUM
+!@U.ActionType.Local@[LocalAction]:@U.ActionType.Local@0     TANaffLocal;
+!@U.ActionType.Direct@[DirectAction]:@U.ActionType.Direct@0     TANaffDirect;
+!@U.ActionType.Inverse@[InverseAction]:@U.ActionType.Inverse@0     TANaffInverse;
+
+!LEXICON TANaffLocal
+
+!LEXICON TANaffDirect
+
+!LEXICON TANaffInverse
+
+
+
+
